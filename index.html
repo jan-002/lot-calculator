@@ -44,7 +44,7 @@
             var type = document.getElementById("type").value;
             var totamt = parseInt(document.getElementById("totamount").value);
             var amtqty = parseInt(document.getElementById("amtperqty").value);
-            var numqty = totamt/amtqty;
+            var numqty = Math.floor(totamt/amtqty);
             var numlots = 0;
             if(type=="bn")
             {
