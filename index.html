@@ -7,12 +7,25 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;600;900&family=Roboto&family=Sacramento&display=swap" rel="stylesheet">
-
+    
     <title>CalcForYou</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
     <style>
         body{
             font-family: 'Montserrat', sans-serif;
             font-size: large;
+            margin-top: 0;
+        }
+        p{
+            display: inline-block;
+            font-size: smaller;
+            padding: 0px 20px;
+        }
+        a{
+            color: white;
+            text-decoration: none;
+            text-align: right;
+            
         }
         h2{
             margin-top: 0;
@@ -41,12 +54,18 @@
             float: left;
             margin-left: 100px;
             margin-top: 20px;
-        }
+        }   
         .main{
             float: left;
             padding-bottom: 30px;
             border: 5px solid rgb(18, 103, 17);
             margin-top: 10px;
+        }
+        .header{
+            height: 10%;
+            background-color:rgb(18, 103, 17);
+            color: antiquewhite;
+            padding: 5px 5px;
         }
         #btn{
             position: relative;
@@ -86,7 +105,8 @@
             border: 5px solid green ;
             margin-right:10%;
         }
-        @media only screen and (max-width: 620px)
+
+        @media only screen and (max-width: 620px) 
         {
 
             .main{
@@ -99,14 +119,14 @@
                 width: 100%;
                 margin-left: 0px;
             }
-
+            
 
         }
     </style>
     <script>
         function computeQtyLot()
         {
-
+           
             var tablece = document.getElementById("myTablece");
             var tablepe = document.getElementById("myTablepe");
 
@@ -129,8 +149,8 @@
 
             var numlots = 0;
             var i = 0;
-            var start = ce - 20;
-            var next = start + incr;
+            var start = ce - 20; 
+            var next = start + incr; 
 
             var headerce1 = tablece.insertRow(0);
             var c = headerce1.insertCell(0);
@@ -159,7 +179,7 @@
             c1.innerHTML = "RANGE";
             c2.innerHTML = "NUM_QTY";
             c3.innerHTML = "NUM_LOTS";
-
+            
             if(type=="bn")
             {
                 cenum_lots = Math.floor(cenumqty/25);
@@ -169,7 +189,7 @@
                     var mid = (start+next)/2;
                     cenumqty = Math.floor(totamt/mid);
                     numlots = Math.floor(cenumqty/25);
-
+                    
                     var row = tablece.insertRow(i+2);
                     var cell1 = row.insertCell(0);
                     var cell2 = row.insertCell(1);
@@ -181,7 +201,7 @@
                     start = next;
                     next = next + incr;
                 }
-
+                
                 var start = pe - 20;
                 var next = start + incr;
                 penum_lots = Math.floor(penumqty/25);
@@ -191,7 +211,7 @@
                     var mid = (start+next)/2;
                     penumqty = Math.floor(totamt/mid);
                     numlots = Math.floor(penumqty/25);
-
+                    
                     var row = tablepe.insertRow(i+2);
                     var cell1 = row.insertCell(0);
                     var cell2 = row.insertCell(1);
@@ -213,7 +233,7 @@
                     var mid = (start+next)/2;
                     cenumqty = Math.floor(totamt/mid);
                     numlots = Math.floor(cenumqty/40);
-
+                    
                     var row = tablece.insertRow(i+2);
                     var cell1 = row.insertCell(0);
                     var cell2 = row.insertCell(1);
@@ -235,7 +255,7 @@
                     var mid = (start+next)/2;
                     penumqty = Math.floor(totamt/mid);
                     numlots = Math.floor(penumqty/40);
-
+                    
                     var row = tablepe.insertRow(i+2);
                     var cell1 = row.insertCell(0);
                     var cell2 = row.insertCell(1);
@@ -255,6 +275,11 @@
     </script>
 </head>
 <body>
+    <div class="header">
+        <h2 style = "display: inline-block; color: beige; font-weight: 500; margin-bottom: 0%;">CalcForYou</h2>
+        <a href = "index.html"><p>LotsNQuantities</p></a>
+        <a href = "calculator.html"><p>Calculator</p></a>
+    </div>
 
     <div class="flex-container">
 
@@ -265,25 +290,25 @@
                 <td><label for = "type">Select Type: </label></td>
                 <td>
                 <select class = "in" name = "type" id="type">
-                <option value = "bn">Banknifty</option>
-                <option value = "fn">Finnifty</option>
-                </select>
+                <option value = "bn">Banknifty</option>  
+                <option value = "fn">Finnifty</option>  
+                </select> 
                 </td></tr>
                 <tr><td><label for="totamount">Total Amount: </label></td><td><input class = "in" type="text" name = "totamount" id = "totamount"></td></tr>
                 <tr><td><label for="ce">Enter CE: </label></td><td><input class = "in" type="text" name = "ce" id = "ce"></td></tr>
-                <tr><td><label for="pe">Enter PE: </label></td><td><input class = "in" type="text" name = "pe" id = "pe"></td></tr>
+                <tr><td><label for="pe">Enter PE: </label></td><td><input class = "in" type="text" name = "pe" id = "pe"></td></tr>  
                 <tr>
                     <td><label for = "inc">Select Increment: </label></td>
                     <td>
                     <select class = "in" name = "inc" id="inc">
-                    <option value = "5">Increment by 5</option>
-                    <option value = "10">Increment by 10</option>
-                    </select>
+                    <option value = "5">Increment by 5</option>  
+                    <option value = "10">Increment by 10</option>  
+                    </select> 
                     </td></tr>
             </table>
             <br>
-
-            <button id = "btn" onclick="computeQtyLot()">CALCULATE</button>
+    
+            <button id = "btn" onclick="computeQtyLot()">CALCULATE</button>  
 
             <hr style = "width: 75%; margin-left: 12%; border-top: 7px dotted rgb(27, 120, 27);">
             <table cellpadding = "10px" id = "myTable">
@@ -315,7 +340,7 @@
                     <th>NUM_LOTS</th>
                     </tr>
                 </table>
-
+                
             </div>
             <div class = "tables">
                 <table id = "myTablepe" cellpadding = "10px" style = "border: 5px solid rgb(18, 103, 17) ">
@@ -328,13 +353,13 @@
                 </table>
             </div>
 
-
+        
     </div>
 
 
 
-
-
-
+    
+    
+    
 </body>
 </html>
