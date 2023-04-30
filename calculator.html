@@ -115,7 +115,9 @@
             cursor: pointer;
             }
 
-
+            #num1,#num2{
+                width: 60%;
+            }
 
 
         @media only screen and (max-width: 620px) 
@@ -134,7 +136,7 @@
             .calc{  
                 margin-top: 20px;
                 float: none;
-                width: 80%;
+                width: 60%;
                 margin-left: 2%;
             }
             #btn{
@@ -143,9 +145,10 @@
             #value{
                 display: none;
             }
-            table{
-                width: 80%;
+            #mytable{
                 margin-right: 0;
+                width: 100%;
+               
             }
 
             
@@ -169,9 +172,9 @@
                     <td ><input type="number" name = "num" id = "num"></td>
                 </tr>
                 <tr>
-                    <td><label for = "range">Divisor: </label></td>
-                    <td><input type = "range" min = "1.0" max = "2.0" step = "0.1" id = "range" name = "range"></td>
-                    <td><span id="demo"></span></td>
+                    <td style="padding-top: 0px;"><label for = "range" style="padding-top: 0px;">Divisor: </label></td>
+                    <td><input type = "range" min = "1.0" max = "2.0" step = "0.1" id = "range" name = "range" >
+                    <span id="demo"></span></td>
                 </tr>
                 <tr>
                     <td><label for = "ans">Result: </label></td>
@@ -184,14 +187,14 @@
         </div>
         <div class = "calc">
 
-            <table border = '0'cellpadding = "20px"  >
-                <tr style="background-color: beige;" id = "table">
+            <table border = '0'cellpadding = "20px"  id = "mytable" >
+                <tr style="background-color: beige;" >
                     <td><button id = "addsub" onclick="add()"><p>Add (+)</p></td>
-                    <td ><input type="number" name = "num1" id = "num1" placeholder="Number 1"></td>
+                    <td style="width: 50%;"><input type="number" name = "num1" id = "num1" placeholder="Number 1"></td>
                 </tr>
                 <tr style="background-color: beige;">
                     <td><button id = "addsub" onclick="sub()"><p>Subtract (-)</p></td>
-                    <td ><input type="number" name = "num2" id = "num2" placeholder="Number 2"></td>
+                    <td style="width: 50%;"><input type="number" name = "num2" id = "num2" placeholder="Number 2"></td>
                 </tr>
                 <tr>
                     <td><label for = "ans2">Result: </label></td>
