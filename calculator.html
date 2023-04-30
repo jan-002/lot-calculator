@@ -136,8 +136,9 @@
             .calc{  
                 margin-top: 20px;
                 float: none;
-                width: 60%;
+                width: 70%;
                 margin-left: 2%;
+                border: none;
             }
             #btn{
                 width: 80%;
@@ -148,7 +149,11 @@
             #mytable{
                 margin-right: 0;
                 width: 100%;
+
                
+            }
+            #num1,#num2{
+                width: 100%;
             }
 
             
@@ -190,11 +195,11 @@
             <table border = '0'cellpadding = "20px"  id = "mytable" >
                 <tr style="background-color: beige;" >
                     <td><button id = "addsub" onclick="add()"><p>Add (+)</p></td>
-                    <td style="width: 50%;"><input type="number" name = "num1" id = "num1" placeholder="Number 1"></td>
+                    <td ><input type="number" name = "num1" id = "num1" placeholder="Number 1"></td>
                 </tr>
                 <tr style="background-color: beige;">
                     <td><button id = "addsub" onclick="sub()"><p>Subtract (-)</p></td>
-                    <td style="width: 50%;"><input type="number" name = "num2" id = "num2" placeholder="Number 2"></td>
+                    <td ><input type="number" name = "num2" id = "num2" placeholder="Number 2"></td>
                 </tr>
                 <tr>
                     <td><label for = "ans2">Result: </label></td>
