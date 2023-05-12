@@ -129,7 +129,11 @@
            
             var tablece = document.getElementById("myTablece");
             var tablepe = document.getElementById("myTablepe");
+            var minr = document.getElementById("min").value;
+            var maxr = document.getElementById("max").value;
 
+            
+            //alert("Checkpoint 1: "+min);
             tablece.innerHTML="";
             tablepe.innerHTML="";
 
@@ -156,7 +160,7 @@
             var c = headerce1.insertCell(0);
             c.innerHTML = "CE";
             c.id = "myTd1";
-            document.getElementById("myTd1").colSpan = "3"
+            document.getElementById("myTd1").colSpan = "9"
             var headerce2 = tablece.insertRow(1);
             headerce2.id = "hce2";
             var c1 = headerce2.insertCell(0);
@@ -165,12 +169,15 @@
             c1.innerHTML = "RANGE";
             c2.innerHTML = "NUM_QTY";
             c3.innerHTML = "NUM_LOTS";
+            c1.colSpan = "3";
+            c2.colSpan = "3";
+            c3.colSpan = "3";
 
             var headerpe1 = tablepe.insertRow(0);
             var c = headerpe1.insertCell(0);
             c.innerHTML = "PE";
             c.id = "myTd";
-            document.getElementById("myTd").colSpan = "3"
+            document.getElementById("myTd").colSpan = "9"
             var headerpe2 = tablepe.insertRow(1);
             headerpe2.id = "hpe2";
             var c1 = headerpe2.insertCell(0);
@@ -179,12 +186,20 @@
             c1.innerHTML = "RANGE";
             c2.innerHTML = "NUM_QTY";
             c3.innerHTML = "NUM_LOTS";
+            c1.colSpan = "3";
+            c2.colSpan = "3";
+            c3.colSpan = "3";
             
             if(type=="bn")
             {
                 cenum_lots = Math.floor(cenumqty/25);
                 for(i=0;i<(20/incr)*2;i++)
                 {
+                    //alert("i = "+i);
+                    var ans=0;
+                    var res1;
+                    var res2;
+                    var min = Number.MAX_VALUE;
                     var st = start.toString() + " - " + next.toString();
                     var mid = (start+next)/2;
                     cenumqty = Math.floor(totamt/mid);
@@ -193,13 +208,41 @@
                     var row = tablece.insertRow(i+2);
                     var cell1 = row.insertCell(0);
                     var cell2 = row.insertCell(1);
+                    cell1.colSpan = "3";
+                    cell2.colSpan = "3";
                     var cell3 = row.insertCell(2);
+                    var cell4 = row.insertCell(3);
+                    var cell5 = row.insertCell(4);
+                    cell3.id = "numlcebn"+i;
+                    cell4.id = "anscebn"+i;
+                    cell5.id = "rescebn"+i;
+
+                    document.getElementById("numlcebn"+i).style.backgroundColor = "#F47C7C";
+                    document.getElementById("anscebn"+i).style.backgroundColor = "#B6EAFA";
+                    document.getElementById("rescebn"+i).style.backgroundColor = "#FFA559";
+
+                    for(var j=minr;j<=maxr;j++)
+                    {
+                        res1 = Math.floor(numlots/j);
+                        res2 = (numlots/j) - res1;
+                        if(res2<min)
+                        {
+                            min = res2;
+                            ans = j;
+                        }
+                        
+                    }
+                    //alert(st+" "+numlots+" "+ans);
                     cell1.innerHTML = st;
                     cell2.innerHTML = cenumqty.toString();
                     cell3.innerHTML = numlots.toString();
+                    cell4.innerHTML = ("/"+ans).toString();
+                    cell5.innerHTML =("="+(Math.floor(numlots/ans))).toString();
 
                     start = next;
                     next = next + incr;
+            
+
                 }
                 
                 var start = pe - 20;
@@ -207,6 +250,10 @@
                 penum_lots = Math.floor(penumqty/25);
                 for(i=0;i<(20/incr)*2;i++)
                 {
+                    var ans=0;
+                    var res1;
+                    var res2;
+                    var min = Number.MAX_VALUE;
                     var st = start.toString() + " - " + next.toString();
                     var mid = (start+next)/2;
                     penumqty = Math.floor(totamt/mid);
@@ -216,9 +263,33 @@
                     var cell1 = row.insertCell(0);
                     var cell2 = row.insertCell(1);
                     var cell3 = row.insertCell(2);
+                    cell1.colSpan = "3";
+                    cell2.colSpan = "3";
+                    var cell4 = row.insertCell(3);
+                    var cell5 = row.insertCell(4);
+                    cell3.id = "numlpebn"+i;
+                    cell4.id = "anspebn"+i;
+                    cell5.id = "respebn"+i;
+
+                    document.getElementById("numlpebn"+i).style.backgroundColor = "#F47C7C";
+                    document.getElementById("anspebn"+i).style.backgroundColor = "#B6EAFA";
+                    document.getElementById("respebn"+i).style.backgroundColor = "#FFA559";
+                    for(var j=minr;j<=maxr;j++)
+                    {
+                        res1 = Math.floor(numlots/j);
+                        res2 = (numlots/j) - res1;
+                        if(res2<min)
+                        {
+                            min = res2;
+                            ans = j;
+                        }
+                        
+                    }
                     cell1.innerHTML = st;
                     cell2.innerHTML = penumqty.toString();
                     cell3.innerHTML = numlots.toString();
+                    cell4.innerHTML = ("/"+ans).toString();
+                    cell5.innerHTML =("="+(Math.floor(numlots/ans))).toString();
 
                     start = next;
                     next = next + incr;
@@ -229,6 +300,11 @@
                 cenum_lots = Math.floor(cenumqty/40);
                 for(i=0;i<(20/incr)*2;i++)
                 {
+                    //alert("i = "+i);
+                    var ans=0;
+                    var res1;
+                    var res2;
+                    var min = Number.MAX_VALUE;
                     var st = start.toString() + " - " + next.toString();
                     var mid = (start+next)/2;
                     cenumqty = Math.floor(totamt/mid);
@@ -237,20 +313,52 @@
                     var row = tablece.insertRow(i+2);
                     var cell1 = row.insertCell(0);
                     var cell2 = row.insertCell(1);
+                    cell1.colSpan = "3";
+                    cell2.colSpan = "3";
                     var cell3 = row.insertCell(2);
+                    var cell4 = row.insertCell(3);
+                    var cell5 = row.insertCell(4);
+                    cell3.id = "numlcebn"+i;
+                    cell4.id = "anscebn"+i;
+                    cell5.id = "rescebn"+i;
+
+                    document.getElementById("numlcebn"+i).style.backgroundColor = "#F47C7C";
+                    document.getElementById("anscebn"+i).style.backgroundColor = "#B6EAFA";
+                    document.getElementById("rescebn"+i).style.backgroundColor = "#FFA559";
+
+                    for(var j=minr;j<=maxr;j++)
+                    {
+                        res1 = Math.floor(numlots/j);
+                        res2 = (numlots/j) - res1;
+                        if(res2<min)
+                        {
+                            min = res2;
+                            ans = j;
+                        }
+                        
+                    }
+                    //alert(st+" "+numlots+" "+ans);
                     cell1.innerHTML = st;
                     cell2.innerHTML = cenumqty.toString();
                     cell3.innerHTML = numlots.toString();
+                    cell4.innerHTML = ("/"+ans).toString();
+                    cell5.innerHTML =("="+(Math.floor(numlots/ans))).toString();
 
                     start = next;
                     next = next + incr;
-                }
+            
 
+                }
+                
                 var start = pe - 20;
                 var next = start + incr;
                 penum_lots = Math.floor(penumqty/40);
                 for(i=0;i<(20/incr)*2;i++)
                 {
+                    var ans=0;
+                    var res1;
+                    var res2;
+                    var min = Number.MAX_VALUE;
                     var st = start.toString() + " - " + next.toString();
                     var mid = (start+next)/2;
                     penumqty = Math.floor(totamt/mid);
@@ -260,9 +368,33 @@
                     var cell1 = row.insertCell(0);
                     var cell2 = row.insertCell(1);
                     var cell3 = row.insertCell(2);
+                    cell1.colSpan = "3";
+                    cell2.colSpan = "3";
+                    var cell4 = row.insertCell(3);
+                    var cell5 = row.insertCell(4);
+                    cell3.id = "numlpebn"+i;
+                    cell4.id = "anspebn"+i;
+                    cell5.id = "respebn"+i;
+
+                    document.getElementById("numlpebn"+i).style.backgroundColor = "#F47C7C";
+                    document.getElementById("anspebn"+i).style.backgroundColor = "#B6EAFA";
+                    document.getElementById("respebn"+i).style.backgroundColor = "#FFA559";
+                    for(var j=minr;j<=maxr;j++)
+                    {
+                        res1 = Math.floor(numlots/j);
+                        res2 = (numlots/j) - res1;
+                        if(res2<min)
+                        {
+                            min = res2;
+                            ans = j;
+                        }
+                        
+                    }
                     cell1.innerHTML = st;
                     cell2.innerHTML = penumqty.toString();
                     cell3.innerHTML = numlots.toString();
+                    cell4.innerHTML = ("/"+ans).toString();
+                    cell5.innerHTML =("="+(Math.floor(numlots/ans))).toString();
 
                     start = next;
                     next = next + incr;
@@ -276,9 +408,8 @@
 </head>
 <body>
     <div class="header">
-        <h2 style = "display: inline-block; color: beige; font-weight: 500; margin-bottom: 0%;">CalcForYou</h2>
+        <h2 style = "display: inline-block; color: beige; font-weight: 500; margin-bottom: 0%;">NAVEENACalcForYou</h2>
         <a href = "index.html"><p>LotsNQuantities</p></a>
-        <a href = "calculator.html"><p>Calculator</p></a>
     </div>
 
     <div class="flex-container">
@@ -311,6 +442,14 @@
             <button id = "btn" onclick="computeQtyLot()">CALCULATE</button>  
 
             <hr style = "width: 75%; margin-left: 12%; border-top: 7px dotted rgb(27, 120, 27);">
+            <table border = '0'cellpadding = "20px" style = "float: left;">
+            <tr><td><label for = "min">Enter min range: </label></td>
+            <td><input type="number" name ="min" id = "min"> </td></tr>
+            <tr><td>
+            <label for = "max">Enter max range: </label></td>
+            <td><input type="number" name ="max" id = "max"></td></tr> 
+            </table>
+            <br>
             <table cellpadding = "10px" id = "myTable">
                 <tr>
                     <td>
