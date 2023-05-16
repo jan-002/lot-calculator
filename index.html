@@ -30,7 +30,10 @@
             color: antiquewhite;
             padding: 5px 5px;
         }
-
+        .carousel-control-next,
+.carousel-control-prev /*, .carousel-indicators */ {
+    filter: invert(100%);
+}
     </style>
     <script>
         function compute()
@@ -104,7 +107,7 @@
                         {
                             res1 = Math.floor(numlots/j);
                             res2 = (numlots/j) - res1;
-                            if(res2<min)
+                            if(res2<=min)
                             {
                                 min = res2;
                                 ans = j;
@@ -153,13 +156,13 @@
         </select> 
         <button type="button" class="btn btn-success" style="margin-left: 5%; margin-bottom: 0.5%;" onclick="compute()">CALCULATE</button>
     </div>
-    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    <div id="carouselExampleIndicators" class="carousel slide" data-interval="false" data-keyboard="false">
         <ol class="carousel-indicators">
             <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
             <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
         </ol>
         <div class="carousel-inner" >
-            <div class="carousel-item active">
+            <div class="carousel-item active"  style="padding-left: 2%;">
                 <div class='parent'>
                     <div class='child'>
                         <table id="0-to-60" border = "1" cellpadding="8px" style="border: 5px solid rgb(18, 103, 17) ">
