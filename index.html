@@ -40,6 +40,7 @@
         {
             var totamt = document.getElementById("totamount").value;
             var type = document.getElementById("type").value;
+            
             if(type=="bn")
                 var div = 25;
             else if(type=="fn")
@@ -103,16 +104,33 @@
                     document.getElementById("resbn"+i+k).style.backgroundColor = "#FFA559";
                     if(numlots>=500)
                     {
+                        var flag = 0;
                         for(var j=500;j<=Math.min(1000,numlots);j++)
                         {
-                            res1 = Math.floor(numlots/j);
-                            res2 = (numlots/j) - res1;
-                            if(res2<=min)
+                            res1 = Math.floor(numlots/j); //no of clicks
+                            res2 = (numlots/j) - res1;  //wastage
+                            if(res2<=min && (res1<30))
                             {
+                                flag = flag + 1;
                                 min = res2;
                                 ans = j;
                             }
                             
+                        }
+                        if(flag==0)
+                        {
+                            for(var j=500;j<=Math.min(1000,numlots);j++)
+                            {
+                                res1 = Math.floor(numlots/j); //no of clicks
+                                res2 = (numlots/j) - res1;  //wastage
+                                if(res2<=min)
+                                {
+                                    flag = flag + 1;
+                                    min = res2;
+                                    ans = j;
+                                }
+                                
+                            }
                         }
                     }
                     else if(numlots<500)
@@ -137,10 +155,10 @@
                 instart = innext;
                 k=k+1;
             }
+}
 
                 
 
-        }
     </script>
 </head>
 
@@ -162,7 +180,7 @@
             <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
         </ol>
         <div class="carousel-inner" >
-            <div class="carousel-item active"  style="padding-left: 2%;">
+            <div class="carousel-item active"  style="padding-left: 1%;">
                 <div class='parent'>
                     <div class='child'>
                         <table id="0-to-60" border = "1" cellpadding="8px" style="border: 5px solid rgb(18, 103, 17) ">
